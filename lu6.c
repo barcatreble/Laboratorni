@@ -15,7 +15,7 @@ int main()
         sum1 += arr1[i];
     }
     avg1 = (float)sum1 / n;
-    printf("Sumata na chislata e:%n\nSrednoaritmetichnoto na chislata e:%.2f", sum1, avg1);
+    printf("Sumata na chislata e:%d\nSrednoaritmetichnoto na chislata e:%.2f", sum1, avg1);
 
     int* arr2 = (int*)malloc(m * sizeof(int));
     printf("Vuvedete %d chisla za vtoriq masiv:", m);
@@ -40,7 +40,7 @@ int main()
 
     printf("Jelaete li da dobavite oshte elementi? (y/n)");
     scanf(" %c", &izbor);
-    if(izbor == 'y')
+    if(izbor == 'y' || izbor == 'Y')
     {
         int m = 3;
         arr1 = (int*)realloc(arr1, (m + n) * sizeof(int));
@@ -167,7 +167,7 @@ int main()
         {
             printf("%d", arr[i][j]);
         }
-        printf("/n");
+        printf("\n");
     }
 
     for(int i = 0; i < n; i++)
