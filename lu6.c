@@ -15,7 +15,7 @@ int main()
         sum1 += arr1[i];
     }
     avg1 = (float)sum1 / n;
-    printf("Sumata na chislata e:%n\nSrednoaritmetichnoto na chislata e:%.2f", sum1, avg1);
+    printf("Sumata na chislata e:%d\nSrednoaritmetichnoto na chislata e:%.2f", sum1, avg1);
 
     int* arr2 = (int*)malloc(m * sizeof(int));
     printf("Vuvedete %d chisla za vtoriq masiv:", m);
@@ -40,7 +40,7 @@ int main()
 
     printf("Jelaete li da dobavite oshte elementi? (y/n)");
     scanf(" %c", &izbor);
-    if(izbor == 'y')
+    if(izbor == 'y' || izbor == 'Y')
     {
         int m = 3;
         arr1 = (int*)realloc(arr1, (m + n) * sizeof(int));
@@ -142,5 +142,37 @@ int main()
     free(arr2);
     free(arr3);*/
 
-    //5
+    //5 Pascal
+    int n = 4;
+    int** arr = (int**)malloc(n * sizeof(int*));
+    if (arr == NULL) return 1;
+    for (int i = 0; i < n; i++)
+    {
+        arr[i] = (int*)malloc((i+1) * sizeof(int));
+        if(arr[i] == NULL) return 1;
+    }
+
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = 0; j <= i; j++)
+        {
+            if(j == 0 || j == i) arr[i][j] = 1;
+            else arr[i][j] = arr[i-1][j-1] + arr[i-1][j];
+        }
+    }
+
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = 0; j <= i; j++)
+        {
+            printf("%d", arr[i][j]);
+        }
+        printf("\n");
+    }
+
+    for(int i = 0; i < n; i++)
+    {
+        free(arr[i]);
+    }
+    free(arr);
 }
