@@ -47,7 +47,7 @@ int main(){
 //2
 void Promo(Course* arr, int n, int index)
 {   
-    if(index >= n)
+    if(index >= n || index < 0)
     {
         printf("Index out of bounds");
         return;
@@ -64,7 +64,7 @@ int filterByPrice(Course* arr, int n, float min_price, float max_price)
     if((fp = fopen("offer.txt", "w")) == NULL)
     {
         printf("Cannot open file");
-        return 1;
+        return -1;
     }
 
     int count = 0;
@@ -80,14 +80,12 @@ int filterByPrice(Course* arr, int n, float min_price, float max_price)
         }
     }
     fclose(fp);
-    if(count == 0) return 0;
     return count;
 }
 
 //4
 Course* deleteCourse(Course** arr, int *n, char name[], char date[])
 {
-    int is_deleted = 0;
     for(int i = 0; i < *n; i++)
     {
         if(strcmp((*arr)[i].name, name) == 0 && strcmp((*arr)[i].date, date) == 0)
@@ -97,14 +95,9 @@ Course* deleteCourse(Course** arr, int *n, char name[], char date[])
                 (*arr)[j] = (*arr)[j+1];
             }
             (*n)--;
-            is_deleted = 1;
-            break;
+            return (*arr);
         }
     }
-    if(is_deleted == 0)
-    {
-        printf("Nqma kurs s takova ime i nachalna data");
-        return NULL;
-    }
-    return (*arr);
+    printf("Nqma kurs s takova ime i nachalna data");
+    return NULL;
 }
