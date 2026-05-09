@@ -72,13 +72,14 @@ int filterByPrice(Course* arr, int n, float min_price, float max_price)
     {
         if(arr[i].price > min_price && arr[i].price < max_price)
         {
-            fprintf(fp, "Ime: %s", arr[i].name);
-            fprintf(fp, "Data %s", arr[i].date);
-            fprintf(fp, "Broi lekcii: %d", arr[i].lections);
-            fprintf(fp, "Cena: .2f", arr[i].price);
+            fprintf(fp, "Ime: %s\n", arr[i].name);
+            fprintf(fp, "Data %s\n", arr[i].date);
+            fprintf(fp, "Broi lekcii: %d\n", arr[i].lections);
+            fprintf(fp, "Cena: %.2f\n", arr[i].price);
             count++;
         }
     }
+    fclose(fp);
     if(count == 0) return 0;
     return count;
 }
@@ -91,13 +92,13 @@ Course* deleteCourse(Course** arr, int *n, char name[], char date[])
     {
         if(strcmp((*arr)[i].name, name) == 0 && strcmp((*arr)[i].date, date) == 0)
         {
-            for(int j = i; j < n; j++)
+            for(int j = i; j < *n - 1; j++)
             {
                 (*arr)[j] = (*arr)[j+1];
-                is_deleted = 1;
-                break;
             }
             (*n)--;
+            is_deleted = 1;
+            break;
         }
     }
     if(is_deleted == 0)
