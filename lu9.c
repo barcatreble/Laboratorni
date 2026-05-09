@@ -161,7 +161,7 @@ int main()
     while(1)
     {
         scanf("%d", &num);
-        if(num != 0) break;
+        if(num == 0) break;
 
         if(fwrite(&num, sizeof(int), 1, fp) != 1)
         {
